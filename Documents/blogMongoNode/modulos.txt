@@ -1,0 +1,94 @@
+Os modulos estão na ordem em que foram instalados
+*como boa prática procure criar o nome das pastas em inglês
+A aplicação pode ser dividida em vários arquivos de rotas , em grupos. Para isso basta chamar em cada arquivo js const express=require('express), const (nome do arquivo js ) = express e exportar o arquivo no final exe: modulos.exports = nome da const criada
+Ao invez de usar o app.get , usar nome da cons criada.get
+
+
+expresss (npm install --save express)
+
+Serve para trabalhar com html
+handlebars (npm install --save express-handlebars)
+
+body-parser (descontinuado) npm install body-parser --save
+
+Faz crud do banco de dados mongodb, tipo o jpa
+mongoose (npm install --save mongoose)
+
+
+1- criar o arquivo app.js. Ele será o arquirvo js principal e chamar os módulos
+
+2- criar as pastas models, rotas, views e layout dentro de views
+
+3-dentro de layout criar o 'mainhandlebars'
+
+4- fazer as configurações do express, bodyParser, handlebars 
+
+5-criar as rotas na pasta routes
+5.1 rotas admin
+
+6- importar a rota admin para o arquivo js principal
+
+7- bootstrap arquivos css
+7-1 import do path para trabalhar com arquivos e diretorios 
+7-2 criação da pasta públic dentro da pasta do projeto, com as pastas js e css baixar do bootstrap pelo zip
+
+8-//Passo 8
+//Public, diz para o express que a nossa pasta de arquivos estáticos é a public. Pega o diretório absoluto por meio do __dirname para evitar erros. Receita de bolo
+
+9-importar o css para o arquivo mainhandlebars
+10- carregar os arquivos js no site do bootstrap e colar abaixo do body em mainhandlebars <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+10- abrir um script em mainhandlebars para pegar os arquivos js que estão na pasta públic
+
+11- para testar o bootstrap, substituir o res.sen por res.render na rota adimin em admin.js da pasta routes. testar com arquivo <button class="btn btn-success">teste</button> no arqivo index.handlebars que foi criado dentro da pasta admin que foi criada dentro de views
+
+12-criar um cabeçãlho que estará em todas as pag.
+12-1 dividir o tamplete em partes com o partials cirando uma pasta partials dentro de views, ele é uma funcionalidade do handlebars. Criar o arquivo _navbar.handlebars. Entra na documentação no site do bootstrap e copiar um exemplo de _navbar e colar no arquivo _navbar.Ir no arquivo mainhandlebars, acima do {{{body}}}, abrir {{}}, e dentro por um > e chamar o nome do arqivo >_navbar. O sinal > significa que vc quer pegar um arquivo dentro de _navbar.
+
+13-desnvolver o formulário de cadastro de categorias
+13.1 pormo botão dentro de um container pela tag  <div class="container">{{{body}}} </div>
+13-2 na pasta routes em /categorias trocar o res.send por res.render("admin/categorias"), dentro da pasta admin que está dentro de views criar um novo arquivo chamado categorias.handlebars
+
+14-por o arquivo 
+<h2>Lista de categorias</h2>
+<hr>
+<a href="/admin/categorias/add"></a><button class="btn btn-success">Nova categoria</button>
+em categorias.handlebars. it na div do navbar o adcionar  mt-4 depois de container
+
+15 criar a rota categorias/add em routes, admin e criar o arquivo addcategorias.handlebars em admin. 
+
+16-criar o formulário em addcategorias e a rota também
+
+17-conecção com o mongodb
+
+18-criação do model categoria Categoria.js dentro da pasta models e chamar o mongoose e criar o schema
+
+19-criação da rotacategorias/nova me admin.js metodo post
+19-1 import do mongoose em admin.js e require da pasta ..models/Categoria
+
+*slug é o link para categoria
+
+20 validação de usuários. Criação de um middlewares
+
+21-instalação do modulo session  npm install --save express-session, o connect-flash
+21.1 configurar a session
+21-2 criar duas variáveis globais dentro das configurações do middlewares
+
+21-20- validação no admin.js no arquivo /categorias/nova
+
+22-listar categorias na rota categorias,por um #each em categorias.handlebars e fazer uma div class card-body
+
+23-edição de categorias, criar uma rota /categorias/edit/:id
+23.1 criar uam views editcategoria.handlebars
+23.2 preecher automaticamente o editcategoria
+
+24 deletar categoria, por um bota-delite em categoria.handlebars, criar a rota    /categoria/deletar
+
+25- definindo o model post, criando Postagens.js em models
+
+26-criar formulário de Postagens e uma rota em admin.js
+27- criar a rota Postagens/add em admin e um arquivo addpostagens.handlebars e definir o arquivo add postagem
+
+28-add as categorias em um banco de dados, definir noma rota postagens/nova, fazer uma validação de postagens
+
